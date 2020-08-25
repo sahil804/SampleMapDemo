@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/locationListFragment">
+
+
+    <fragment
+        android:id="@+id/locationDetailFragment"
+        android:name="com.example.samplemapdemo.detail.LocationDetailFragment"
+        android:label="Location Information"
+        tools:layout="@layout/fragment_base" >
+        <argument
+            android:name="locationInfo"
+            app:argType="com.example.samplemapdemo.data.model.LocationInfo" />
+    </fragment>
+    <fragment
+        android:id="@+id/locationListFragment"
+        android:name="com.example.samplemapdemo.list.LocationListFragment"
+        android:label="Locations"
+        tools:layout="@layout/fragment_base" >
+        <action
+            android:id="@+id/action_locationListFragment_to_locationDetailFragment"
+            app:destination="@id/locationDetailFragment" />
+        <action
+            android:id="@+id/action_locationListFragment_to_addMarkerDialogFragment"
+            app:destination="@id/addMarkerDialogFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/addMarkerDialogFragment"
+        android:name="com.example.samplemapdemo.main.AddMarkerDialogFragment"
+        android:label="fragment_add_marker_dialog"
+        tools:layout="@layout/fragment_add_marker_dialog" >
+        <action
+            android:id="@+id/action_addMarkerDialogFragment_to_locationListFragment"
+            app:destination="@id/locationListFragment"
+            app:launchSingleTop="true" />
+    </dialog>
+</navigation>
